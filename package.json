@@ -1,0 +1,18 @@
+{
+  "name": "daily-weather-texter",
+  "version": "1.0.0",
+  "description": "A whimsical daily weather SMS app",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js",
+    "test-message": "node test-message.js"
+  },
+  "dependencies": {
+    "node-cron": "^3.0.3",
+    "twilio": "^4.19.0",
+    "axios": "^1.6.2",
+    "dotenv": "^16.3.1"
+  }
+}
