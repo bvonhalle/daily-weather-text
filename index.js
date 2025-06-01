@@ -216,15 +216,21 @@ const formatWeatherMessage = (weatherData) => {
   return message;
 };
 
-// Send SMS
+// Send SMS (updated for multiple recipients)
 const sendSMS = async (message) => {
   try {
-    await twilioClient.messages.create({
-      body: message,
-      from: process.env.TWILIO_PHONE_NUMBER,
-      to: process.env.YOUR_PHONE_NUMBER
-    });
-    console.log('Weather SMS sent successfully!');
+    const phoneNumbers = process.env.PHONE_NUMBERS.split(',').map(num => num.trim());
+    
+    const sendPromises = phoneNumbers.map(number => 
+      twilioClient.messages.create({
+        body: message,
+        from: process.env.TWILIO_PHONE_NUMBER,
+        to: number
+      })
+    );
+    
+    await Promise.all(sendPromises);
+    console.log(`Weather SMS sent to ${phoneNumbers.length} recipients!`);
   } catch (error) {
     console.error('Error sending SMS:', error);
     throw error;
