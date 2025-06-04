@@ -292,3 +292,19 @@ process.on('SIGINT', () => {
   console.log('Shutting down weather app...');
   process.exit();
 });
+
+// Export for testing
+export { sendDailyWeather };
+
+// Manual trigger via environment variable
+if (process.env.SEND_NOW === 'true') {
+  console.log('SEND_NOW detected - sending weather immediately...');
+  sendDailyWeather()
+    .then(() => {
+      console.log('Manual weather send complete!');
+      // Don't exit - let the cron job continue running
+    })
+    .catch(error => {
+      console.error('Manual send failed:', error);
+    });
+}
