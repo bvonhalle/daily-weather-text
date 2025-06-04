@@ -219,18 +219,38 @@ const formatWeatherMessage = (weatherData) => {
 // Send SMS (updated for multiple recipients)
 const sendSMS = async (message) => {
   try {
+    // Check if PHONE_NUMBERS exists
+    if (!process.env.PHONE_NUMBERS) {
+      throw new Error('PHONE_NUMBERS environment variable not set!');
+    }
+    
     const phoneNumbers = process.env.PHONE_NUMBERS.split(',').map(num => num.trim());
+    
+    if (phoneNumbers.length === 0) {
+      throw new Error('No phone numbers found in PHONE_NUMBERS!');
+    }
+    
+    console.log(`Sending SMS to ${phoneNumbers.length} recipients...`);
     
     const sendPromises = phoneNumbers.map(number => 
       twilioClient.messages.create({
         body: message,
         from: process.env.TWILIO_PHONE_NUMBER,
         to: number
+      }).catch(error => {
+        console.error(`Failed to send to ${number}:`, error.message);
+        return null; // Don't fail the entire batch
       })
     );
     
-    await Promise.all(sendPromises);
-    console.log(`Weather SMS sent to ${phoneNumbers.length} recipients!`);
+    const results = await Promise.all(sendPromises);
+    const successful = results.filter(r => r !== null).length;
+    
+    console.log(`Weather SMS sent to ${successful}/${phoneNumbers.length} recipients!`);
+    
+    if (successful === 0) {
+      throw new Error('Failed to send to any recipients!');
+    }
   } catch (error) {
     console.error('Error sending SMS:', error);
     throw error;
