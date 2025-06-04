@@ -7,7 +7,9 @@
   "scripts": {
     "start": "node index.js",
     "dev": "node --watch index.js",
-    "test-message": "node test-message.js"
+    "test-message": "node test-message.js",
+    "send-now": "node -e \"import('./index.js').then(m => m.sendDailyWeather())\""
+
   },
   "dependencies": {
     "axios": "^1.6.2",
