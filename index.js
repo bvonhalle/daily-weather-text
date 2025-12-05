@@ -45,7 +45,7 @@ const getActivitySuggestion = (temp, condition, windSpeed) => {
   }
   
   if (condition === 'Rain' || condition === 'Drizzle') {
-    suggestions.push('☔ Indoor activities today!');
+    suggestions.push('☔️ Indoor activities today!');
   }
   
   if (temp >= 75 && condition === 'Clear') {
@@ -59,58 +59,35 @@ const getActivitySuggestion = (temp, condition, windSpeed) => {
 const getDailyQuote = () => {
   const quotes = [
     // Historic
-    { quote: "The only thing we have to fear is fear itself.", author: "Franklin D. Roosevelt", emoji: "🦅" },
-    { quote: "I have a dream.", author: "Martin Luther King Jr.", emoji: "✊" },
-    { quote: "Be the change you wish to see in the world.", author: "Mahatma Gandhi", emoji: "🌍" },
-    { quote: "The best time to plant a tree was 20 years ago. The second best time is now.", author: "Chinese Proverb", emoji: "🌳" },
-    { quote: "In the end, we will remember not the words of our enemies, but the silence of our friends.", author: "Martin Luther King Jr.", emoji: "🤝" },
-    { quote: "Give me liberty, or give me death!", author: "Patrick Henry", emoji: "⚡" },
-    { quote: "That's one small step for man, one giant leap for mankind.", author: "Neil Armstrong", emoji: "🚀" },
+    { quote: "The only thing we have to fear is fear itself.", author: "Franklin D. Roosevelt" },
+    { quote: "Be the change you wish to see in the world.", author: "Mahatma Gandhi" },
+    { quote: "The best time to plant a tree was 20 years ago. The second best time is now.", author: "Chinese Proverb" },
+    { quote: "In the end, we will remember not the words of our enemies, but the silence of our friends.", author: "Martin Luther King Jr." },
     
     // Motivational
-    { quote: "Your only limit is your mind.", author: "Unknown", emoji: "🧠" },
-    { quote: "Success is not final, failure is not fatal: it is the courage to continue that counts.", author: "Winston Churchill", emoji: "💪" },
-    { quote: "The way to get started is to quit talking and begin doing.", author: "Walt Disney", emoji: "🎯" },
-    { quote: "Don't be afraid to give up the good to go for the great.", author: "John D. Rockefeller", emoji: "⭐" },
-    { quote: "It is during our darkest moments that we must focus to see the light.", author: "Aristotle", emoji: "💡" },
-    { quote: "Believe you can and you're halfway there.", author: "Theodore Roosevelt", emoji: "🌟" },
-    { quote: "The future belongs to those who believe in the beauty of their dreams.", author: "Eleanor Roosevelt", emoji: "✨" },
-    { quote: "What lies behind us and what lies before us are tiny matters compared to what lies within us.", author: "Ralph Waldo Emerson", emoji: "🔥" },
+    { quote: "Success is not final, failure is not fatal: it is the courage to continue that counts.", author: "Winston Churchill" },
+    { quote: "It is during our darkest moments that we must focus to see the light.", author: "Aristotle" },
+    { quote: "Believe you can and you're halfway there.", author: "Theodore Roosevelt" },
+    { quote: "The future belongs to those who believe in the beauty of their dreams.", author: "Eleanor Roosevelt" },
+    { quote: "What lies behind us and what lies before us are tiny matters compared to what lies within us.", author: "Ralph Waldo Emerson" },
     
     // Movie/TV
-    { quote: "May the Force be with you.", author: "Star Wars", emoji: "⚔️" },
-    { quote: "I'll be back.", author: "The Terminator", emoji: "🤖" },
-    { quote: "Life is like a box of chocolates. You never know what you're gonna get.", author: "Forrest Gump", emoji: "🍫" },
-    { quote: "Nobody puts Baby in a corner.", author: "Dirty Dancing", emoji: "💃" },
-    { quote: "Winter is coming.", author: "Game of Thrones", emoji: "❄️" },
-    { quote: "I am inevitable.", author: "Thanos, Avengers", emoji: "💎" },
-    { quote: "That's what she said.", author: "The Office", emoji: "😏" },
-    { quote: "Clear eyes, full hearts, can't lose.", author: "Friday Night Lights", emoji: "🏈" },
-    { quote: "How you doin'?", author: "Joey, Friends", emoji: "😎" },
-    { quote: "I'm gonna make him an offer he can't refuse.", author: "The Godfather", emoji: "🎭" },
-    { quote: "Suit up!", author: "Barney, How I Met Your Mother", emoji: "👔" },
-    { quote: "We were on a break!", author: "Ross, Friends", emoji: "💔" },
+    { quote: "May the Force be with you.", author: "Yoda" },
+    { quote: "I'll be back.", author: "The Terminator" },
+    { quote: "Life is like a box of chocolates. You never know what you're gonna get.", author: "Forrest Gump" },
     
     // Comedy/Conan
-    { quote: "I'm ridiculous, and I know it, and I use it.", author: "Conan O'Brien", emoji: "🤡" },
-    { quote: "Work hard, be kind, and amazing things will happen.", author: "Conan O'Brien", emoji: "🎪" },
-    { quote: "If you work really hard, and you're kind, amazing things will happen.", author: "Conan O'Brien", emoji: "🌈" },
-    { quote: "Nobody in life gets exactly what they thought they were going to get. But if you work really hard and you're kind, amazing things will happen.", author: "Conan O'Brien", emoji: "🎭" },
-    { quote: "It's not easy to juggle a pregnant wife and a troubled child, but somehow I managed to fit in eight hours of TV a day.", author: "Homer Simpson", emoji: "📺" },
-    { quote: "I told my wife the truth. I told her I was seeing a psychiatrist. Then she told me the truth: that she was seeing a psychiatrist, two plumbers, and a bartender.", author: "Rodney Dangerfield", emoji: "🍸" },
-    { quote: "I haven't slept for ten days, because that would be too long.", author: "Mitch Hedberg", emoji: "😴" },
-    { quote: "My fake plants died because I did not pretend to water them.", author: "Mitch Hedberg", emoji: "🪴" },
-    { quote: "I'm against picketing, but I don't know how to show it.", author: "Mitch Hedberg", emoji: "🪧" },
-    { quote: "The depressing thing about tennis is that no matter how good I get, I'll never be as good as a wall.", author: "Mitch Hedberg", emoji: "🎾" },
+    { quote: "Work hard, be kind, and amazing things will happen.", author: "Conan O'Brien" },
+    { quote: "The depressing thing about tennis is that no matter how good I get, I'll never be as good as a wall.", author: "Mitch Hedberg" },
     
     // Wisdom
-    { quote: "The unexamined life is not worth living.", author: "Socrates", emoji: "🤔" },
-    { quote: "Be yourself; everyone else is already taken.", author: "Oscar Wilde", emoji: "✨" },
-    { quote: "Two things are infinite: the universe and human stupidity; and I'm not sure about the universe.", author: "Albert Einstein", emoji: "🌌" },
-    { quote: "A room without books is like a body without a soul.", author: "Marcus Tullius Cicero", emoji: "📚" },
-    { quote: "You miss 100% of the shots you don't take.", author: "Wayne Gretzky", emoji: "🏒" },
-    { quote: "The only way to do great work is to love what you do.", author: "Steve Jobs", emoji: "💻" },
-    { quote: "Life is what happens when you're busy making other plans.", author: "John Lennon", emoji: "🎵" }
+    { quote: "The unexamined life is not worth living.", author: "Socrates" },
+    { quote: "Be yourself; everyone else is already taken.", author: "Oscar Wilde" },
+    { quote: "You miss 100% of the shots you don't take.", author: "Wayne Gretzky" },
+
+    // Compliments
+    { quote: "You're beautiful. Have a great day, Love you!", author: "Your spouse" },
+    { quote: "Take a risk today, failure = growth.", author: "BVH" }
   ];
   
   // Use date as seed for consistent daily quote
@@ -175,12 +152,12 @@ const formatWeatherMessage = (weatherData) => {
   );
   
   // Build message
-  let message = `🌞 Good morning! ${process.env.CITY_NAME} Weather Update\n\n`;
-  message += `${currentEmoji} Now: ${currentTemp}°F - ${currentCondition}\n`;
-  message += `🌡️ Today: ${minTemp}° - ${maxTemp}°F\n\n`;
+  let message = `Morning 🌞  \n\nHere's your ${process.env.CITY_NAME} Weather Update\n\n`;
+  message += `Now: ${currentTemp}°F - ${currentCondition}\n`;
+  message += `Today: ${minTemp}° - ${maxTemp}°F\n\n`;
   
   // Hourly breakdown
-  message += `📅 Today's Timeline:\n`;
+  message += `Today:\n`;
   for (let i = 0; i < Math.min(todayForecasts.length, 4); i++) {
     const forecast = todayForecasts[i];
     const time = new Date(forecast.dt * 1000);
@@ -193,12 +170,12 @@ const formatWeatherMessage = (weatherData) => {
     const condition = forecast.weather[0].main;
     const emoji = getWeatherEmoji(condition);
     
-    message += `${hour}: ${emoji} ${temp}° ${condition}\n`;
+    message += `${hour}: ${temp}° ${condition} ${emoji} \n`;
   }
   
   // Rain alert
   if (rainHours.length > 0) {
-    message += `\n☔ Rain expected today! Don't forget your umbrella!\n`;
+    message += `\nRain today ☔️ Don't forget your jacket or umbrella!\n`;
   }
   
   // Activity suggestions
