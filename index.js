@@ -87,7 +87,7 @@ const getDailyQuote = () => {
 
     // Compliments
     { quote: "You're beautiful. Have a great day, Love you!", author: "Your spouse" },
-    { quote: "Take a risk today, failure = growth.", author: "BVH" }
+    { quote: "Take a risk today, failure = growth.", author: "unknown" }
   ];
   
   // Use date as seed for consistent daily quote
@@ -96,7 +96,7 @@ const getDailyQuote = () => {
   const quoteIndex = dayOfYear % quotes.length;
   
   const selectedQuote = quotes[quoteIndex];
-  return `${selectedQuote.emoji} "${selectedQuote.quote}" — ${selectedQuote.author}`;
+  return `"${selectedQuote.quote}" — ${selectedQuote.author}`;
 };
 
 // Word of the day
