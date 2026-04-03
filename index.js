@@ -252,17 +252,16 @@ const sendDailyWeather = async () => {
   }
 };
 
-// Schedule the job for 8:00 AM every day
-cron.schedule('0 8 * * *', () => {
-  console.log('Running daily weather job...');
-  sendDailyWeather();
-}, {
-  timezone: process.env.TIMEZONE
-});
+// PAUSED: cron job disabled
+// cron.schedule('0 8 * * *', () => {
+//   console.log('Running daily weather job...');
+//   sendDailyWeather();
+// }, {
+//   timezone: process.env.TIMEZONE
+// });
 
-// Send initial message on startup (for testing)
-console.log('Weather SMS app started! 🌤️');
-console.log('Scheduled to run daily at 8:00 AM', process.env.TIMEZONE);
+console.log('Weather SMS app started (PAUSED - cron job disabled)');
+// console.log('Scheduled to run daily at 8:00 AM', process.env.TIMEZONE);
 
 // Keep the process running
 process.on('SIGINT', () => {
@@ -273,15 +272,14 @@ process.on('SIGINT', () => {
 // Export for testing
 export { sendDailyWeather };
 
-// Manual trigger via environment variable
-if (process.env.SEND_NOW === 'true') {
-  console.log('SEND_NOW detected - sending weather immediately...');
-  sendDailyWeather()
-    .then(() => {
-      console.log('Manual weather send complete!');
-      // Don't exit - let the cron job continue running
-    })
-    .catch(error => {
-      console.error('Manual send failed:', error);
-    });
-}
+// PAUSED: manual trigger disabled
+// if (process.env.SEND_NOW === 'true') {
+//   console.log('SEND_NOW detected - sending weather immediately...');
+//   sendDailyWeather()
+//     .then(() => {
+//       console.log('Manual weather send complete!');
+//     })
+//     .catch(error => {
+//       console.error('Manual send failed:', error);
+//     });
+// }
